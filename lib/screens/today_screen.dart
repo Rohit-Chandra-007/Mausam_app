@@ -21,7 +21,7 @@ class TodayPage extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        '29°',
+                        '2°',
                         style: kTemperatureText,
                       ),
                     ),
@@ -35,7 +35,7 @@ class TodayPage extends StatelessWidget {
                       height: 130.0,
                       padding: EdgeInsets.all(8.0),
                       child: Image(
-                        image: AssetImage('assets/images/003-sunny.png'),
+                        image: AssetImage('assets/images/037-fog.png'),
                         fit: BoxFit.scaleDown,
                       ),
                     ),

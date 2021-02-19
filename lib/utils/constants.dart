@@ -10,6 +10,6 @@ const kBoxDecoration = BoxDecoration(
 
 const kTemperatureText = TextStyle(
   fontSize: 100.0,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: Colors.white,
 );
