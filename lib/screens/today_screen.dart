@@ -2,12 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mausam_app/utils/constants.dart';
 
-class TodayPage extends StatefulWidget {
-  @override
-  _TodayPageState createState() => _TodayPageState();
-}
-
-class _TodayPageState extends State<TodayPage> {
+class TodayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +14,7 @@ class _TodayPageState extends State<TodayPage> {
             Expanded(
               flex: 1,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
                 textBaseline: TextBaseline.alphabetic,
                 children: [
                   Expanded(
@@ -36,10 +31,12 @@ class _TodayPageState extends State<TodayPage> {
                   ),
                   Expanded(
                     child: Container(
+                      width: 130.0,
+                      height: 130.0,
                       padding: EdgeInsets.all(8.0),
                       child: Image(
-                        image: AssetImage('assets/images/001-rainbow.png'),
-                        fit: BoxFit.fill,
+                        image: AssetImage('assets/images/003-sunny.png'),
+                        fit: BoxFit.scaleDown,
                       ),
                     ),
                   )

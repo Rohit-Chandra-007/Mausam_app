@@ -5,18 +5,14 @@ import 'package:mausam_app/screens/tomorrow_screen.dart';
 import 'package:mausam_app/utils/constants.dart';
 import 'package:mausam_app/widgets/tab_label_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(centerTitle: true,
+        appBar: AppBar(
+            centerTitle: true,
             leading: Icon(Icons.menu),
             title: Text('ROORKEE'),
             bottom: TabBar(
