@@ -1,10 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/utils/constants.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
-class TodayPage extends StatelessWidget {
+class TodayPage extends StatefulWidget {
+  @override
+  _TodayPageState createState() => _TodayPageState();
+}
+
+class _TodayPageState extends State<TodayPage> {
+  @override
+  void initState() {
+    super.initState();
+    DeviceLocation.getLocation();
+  }
+
+  getWeatherData() async {
+    var response = await http.get(
+        'http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=0319c9f269575e5df0601a45b93580ee');
+    if (response.statusCode == 200) {
+      var jsonResponse = convert.jsonDecode(response.body);
+      print(jsonResponse);
+      //var itemCount = jsonResponse['totalItems'];
+      //print('Number of books about http: $itemCount.');
+    } else {
+      //print('Request failed with status: ${response.statusCode}.');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    getWeatherData();
     return Container(
       decoration: kBoxDecoration,
       child: Padding(

@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
             centerTitle: true,
             leading: Icon(Icons.menu),
-            title: Text('ROORKEE'),
+            title: Text('MAUSAM APP'),
             bottom: TabBar(
                 labelColor: kLabelColor,
                 unselectedLabelColor: Colors.white,
