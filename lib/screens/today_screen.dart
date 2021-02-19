@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/utils/constants.dart';
 import 'package:http/http.dart' as http;
@@ -11,28 +12,39 @@ class TodayPage extends StatefulWidget {
 }
 
 class _TodayPageState extends State<TodayPage> {
+  double latitute;
+  double longitute;
+  static const String APIKEY = '0319c9f269575e5df0601a45b93580ee';
   @override
   void initState() {
     super.initState();
-    DeviceLocation.getLocation();
+    getDeviceLocation();
+  }
+
+  void getDeviceLocation() async {
+    Position position = await Location.determinePosition();
+    latitute = position.latitude;
+    longitute = position.longitude;
+    print(position);
+    print(latitute);
+    print(longitute);
+    getWeatherData();
   }
 
   getWeatherData() async {
     var response = await http.get(
-        'http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=0319c9f269575e5df0601a45b93580ee');
+        'http://api.openweathermap.org/data/2.5/weather?lat=$latitute&lon=$longitute&appid=$APIKEY');
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
-      print(jsonResponse);
-      //var itemCount = jsonResponse['totalItems'];
-      //print('Number of books about http: $itemCount.');
+      double temp = jsonResponse['main']['temp'];
+      print(temp - 273);
     } else {
-      //print('Request failed with status: ${response.statusCode}.');
+      print('Request failed with status: ${response.statusCode}.');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    getWeatherData();
     return Container(
       decoration: kBoxDecoration,
       child: Padding(
