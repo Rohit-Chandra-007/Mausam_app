@@ -12,8 +12,6 @@ class HomeScreen extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-            centerTitle: true,
-            leading: Icon(Icons.menu),
             title: Text('MAUSAM APP'),
             bottom: TabBar(
                 labelColor: kLabelColor,

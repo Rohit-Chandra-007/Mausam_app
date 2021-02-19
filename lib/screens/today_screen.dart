@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mausam_app/services/location.dart';
+import 'package:mausam_app/services/networking.dart';
 import 'package:mausam_app/utils/constants.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
 
 class TodayPage extends StatefulWidget {
   @override
@@ -18,29 +17,22 @@ class _TodayPageState extends State<TodayPage> {
   @override
   void initState() {
     super.initState();
-    getDeviceLocation();
+    getDeviceLocationWeatherData();
   }
 
-  void getDeviceLocation() async {
+  void getDeviceLocationWeatherData() async {
     Position position = await Location.determinePosition();
     latitute = position.latitude;
     longitute = position.longitude;
-    print(position);
-    print(latitute);
-    print(longitute);
-    getWeatherData();
-  }
-
-  getWeatherData() async {
-    var response = await http.get(
+    NetworkHelper networkHelper = NetworkHelper(
         'http://api.openweathermap.org/data/2.5/weather?lat=$latitute&lon=$longitute&appid=$APIKEY');
-    if (response.statusCode == 200) {
-      var jsonResponse = convert.jsonDecode(response.body);
-      double temp = jsonResponse['main']['temp'];
-      print(temp - 273);
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
+
+    var getWeatherData = await networkHelper.getData();
+
+    //  double temp = jsonResponse['main']['temp'];
+    //   String weatherCondition = jsonResponse['weather'][0]['main'];
+      print(getWeatherData);
+      //print(weatherCondition);
   }
 
   @override
