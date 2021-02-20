@@ -11,40 +11,35 @@ class HomeScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-            title: Text('MAUSAM APP'),
-            bottom: TabBar(
-                labelColor: kLabelColor,
-                unselectedLabelColor: Colors.white,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(color: kLabelColor, width: 1),
-                    color: Colors.white),
-                tabs: [
-                  Tab(
-                    child: const TabLabelWidget(
-                      tabLabel: 'TODAY',
-                    ),
-                  ),
-                  Tab(
-                    child: const TabLabelWidget(
-                      tabLabel: 'TOMORROW',
-                    ),
-                  ),
-                  Tab(
-                    child: const TabLabelWidget(
-                      tabLabel: 'NEXT WEEK',
-                    ),
-                  ),
-                ]),
-            elevation: 0.0,
-            flexibleSpace: Container(
-              decoration: kBoxDecoration,
-            )),
-        body: TabBarView(
-          children: [TodayPage(), TomorrowPage(), NextWeekPage()],
-        ),
+        // appBar: AppBar(
+        //     elevation: 0,
+        //     leading: InkWell(
+        //       child: Icon(
+        //         Icons.room,
+        //         size: 26.0,
+        //       ),
+        //       onTap: () {},
+        //     ),
+        //     centerTitle: true,
+        //     title: Text('MAUSAM APP'),
+        //     actions: [
+        //       Padding(
+        //         padding: const EdgeInsets.only(
+        //           right: 8,
+        //         ),
+        //         child: InkWell(
+        //           onTap: () {},
+        //           child: Icon(
+        //             Icons.search,
+        //             size: 26.0,
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //     flexibleSpace: Container(
+        //       decoration: kBoxDecoration,
+        //     )),
+        body: TodayPage(),
       ),
     );
   }

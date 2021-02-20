@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/services/networking.dart';
 import 'package:mausam_app/utils/constants.dart';
+import 'package:mausam_app/widgets/temperature_widget.dart';
 
 class TodayPage extends StatefulWidget {
   @override
@@ -31,112 +31,80 @@ class _TodayPageState extends State<TodayPage> {
 
     //  double temp = jsonResponse['main']['temp'];
     //   String weatherCondition = jsonResponse['weather'][0]['main'];
-      print(getWeatherData);
-      //print(weatherCondition);
+    print(getWeatherData);
+    //print(weatherCondition);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: kBoxDecoration,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.alphabetic,
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        '2°',
-                        style: kTemperatureText,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: 130.0,
-                      height: 130.0,
-                      padding: EdgeInsets.all(8.0),
-                      child: Image(
-                        image: AssetImage('assets/images/037-fog.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  Row(
+    return SafeArea(
+      child: Container(
+          decoration: kBoxDecoration,
+          child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(children: [
+                TemperatureWidget(),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Container(
-                          child: Card(
-                            color: Colors.white,
-                            elevation: 10,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
+                      WeatherCardWidget(
+                        weatherInfo: 'Wind',
+                        weatherValue: "N 7 mph",
                       ),
-                      Expanded(
-                        child: Container(
-                          child: Card(
-                            color: Colors.white,
-                            elevation: 10,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
-                      )
+                      WeatherCardWidget(
+                        weatherInfo: 'Rain',
+                        weatherValue: "18%",
+                      ),
+                      WeatherCardWidget(
+                        weatherInfo: 'Humidity',
+                        weatherValue: "59%",
+                      ),
+                      WeatherCardWidget(
+                        weatherInfo: 'Feels Like',
+                        weatherValue: "5°",
+                      ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Card(
-                            color: Colors.white,
-                            elevation: 10,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          child: Card(
-                            color: Colors.white,
-                            elevation: 10,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+                ),
+              ]))),
     );
+  }
+}
+
+class WeatherCardWidget extends StatelessWidget {
+  final String weatherInfo;
+
+  final String weatherValue;
+
+  const WeatherCardWidget(
+      {Key key, @required this.weatherInfo, @required this.weatherValue})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        elevation: 5.0,
+        color: Colors.white,
+        child: Container(
+          alignment: Alignment.center,
+          width: 80.0,
+          height: 80.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                weatherInfo,
+                style: TextStyle(color: Colors.grey[800]),
+              ),
+              Text(weatherValue,
+                  style: TextStyle(
+                      color: Color(0xff3177F9),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16)),
+            ],
+          ),
+        ));
   }
 }
