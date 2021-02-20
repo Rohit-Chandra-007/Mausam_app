@@ -37,40 +37,37 @@ class _TodayPageState extends State<TodayPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-          decoration: kBoxDecoration,
-          child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(children: [
-                TemperatureWidget(),
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      WeatherCardWidget(
-                        weatherInfo: 'Wind',
-                        weatherValue: "N 7 mph",
-                      ),
-                      WeatherCardWidget(
-                        weatherInfo: 'Rain',
-                        weatherValue: "18%",
-                      ),
-                      WeatherCardWidget(
-                        weatherInfo: 'Humidity',
-                        weatherValue: "59%",
-                      ),
-                      WeatherCardWidget(
-                        weatherInfo: 'Feels Like',
-                        weatherValue: "5°",
-                      ),
-                    ],
-                  ),
+    return Container(
+        decoration: kBoxDecoration,
+        padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+        child: Column(children: [
+          TemperatureWidget(),
+          Expanded(
+            flex: 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                WeatherCardWidget(
+                  weatherInfo: 'Wind',
+                  weatherValue: "N 7 mph",
                 ),
-              ]))),
-    );
+                WeatherCardWidget(
+                  weatherInfo: 'Rain',
+                  weatherValue: "18%",
+                ),
+                WeatherCardWidget(
+                  weatherInfo: 'Humidity',
+                  weatherValue: "59%",
+                ),
+                WeatherCardWidget(
+                  weatherInfo: 'Feels Like',
+                  weatherValue: "5°",
+                ),
+              ],
+            ),
+          ),
+        ]));
   }
 }
 
