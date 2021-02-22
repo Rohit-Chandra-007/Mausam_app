@@ -3,14 +3,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/services/networking.dart';
 import 'package:mausam_app/utils/constants.dart';
+import 'package:mausam_app/widgets/nextdayweather.dart';
 import 'package:mausam_app/widgets/temperature_widget.dart';
 
-class TodayPage extends StatefulWidget {
+class WeatherPage extends StatefulWidget {
   @override
-  _TodayPageState createState() => _TodayPageState();
+  _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _TodayPageState extends State<TodayPage> {
+class _WeatherPageState extends State<WeatherPage> {
   double latitute;
   double longitute;
   static const String APIKEY = '0319c9f269575e5df0601a45b93580ee';
@@ -26,49 +27,58 @@ class _TodayPageState extends State<TodayPage> {
     latitute = position.latitude;
     longitute = position.longitude;
     NetworkHelper networkHelper = NetworkHelper(
-        'http://api.openweathermap.org/data/2.5/weather?lat=$latitute&lon=$longitute&appid=$APIKEY');
+        'https://api.openweathermap.org/data/2.5/onecall?lat=$latitute&lon=$longitute&units=metric&appid=$APIKEY');
 
     var getWeatherData = await networkHelper.getData();
 
     //  double temp = jsonResponse['main']['temp'];
     //   String weatherCondition = jsonResponse['weather'][0]['main'];
-    print(getWeatherData);
-    //print(weatherCondition);
+    // print(getWeatherData);
+
+    // print(weatherCondition);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: kBoxDecoration,
-        padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
-        child: Column(children: [
+      decoration: kBoxDecoration,
+      padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+      child: Column(
+        children: [
           TemperatureWidget(),
           Expanded(
             flex: 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
               children: [
-                WeatherCardWidget(
-                  weatherInfo: 'Wind',
-                  weatherValue: "N 7 mph",
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    WeatherCardWidget(
+                      weatherInfo: 'Wind',
+                      weatherValue: "N 7 mph",
+                    ),
+                    WeatherCardWidget(
+                      weatherInfo: 'Rain',
+                      weatherValue: "18%",
+                    ),
+                    WeatherCardWidget(
+                      weatherInfo: 'Humidity',
+                      weatherValue: "59%",
+                    ),
+                    WeatherCardWidget(
+                      weatherInfo: 'Feels Like',
+                      weatherValue: "5°",
+                    ),
+                  ],
                 ),
-                WeatherCardWidget(
-                  weatherInfo: 'Rain',
-                  weatherValue: "18%",
-                ),
-                WeatherCardWidget(
-                  weatherInfo: 'Humidity',
-                  weatherValue: "59%",
-                ),
-                WeatherCardWidget(
-                  weatherInfo: 'Feels Like',
-                  weatherValue: "5°",
-                ),
+                //NextDayWeatherWidget(),
               ],
             ),
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }
 
