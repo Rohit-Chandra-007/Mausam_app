@@ -14,6 +14,7 @@ class _TodayPageState extends State<TodayPage> {
   double latitute;
   double longitute;
   static const String APIKEY = '0319c9f269575e5df0601a45b93580ee';
+
   @override
   void initState() {
     super.initState();
@@ -79,6 +80,7 @@ class WeatherCardWidget extends StatelessWidget {
   const WeatherCardWidget(
       {Key key, @required this.weatherInfo, @required this.weatherValue})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Card(
