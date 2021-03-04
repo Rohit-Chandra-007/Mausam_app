@@ -21,9 +21,7 @@ class HomeScreen extends StatelessWidget {
         title: Text('MAUSAM APP'),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(
-              right: 8,
-            ),
+            padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
                 var date =

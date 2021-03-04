@@ -26,11 +26,14 @@ class TemperatureWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  '29°',
-                  style: kTemperatureText,
+              Flexible(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    '29°',
+                    style: kTemperatureText,
+                  ),
                 ),
               ),
             ],
@@ -41,22 +44,26 @@ class TemperatureWidget extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  width: 130.0,
-                  height: 130.0,
-                  padding: EdgeInsets.all(8.0),
-                  child: Image(
-                    image: AssetImage('assets/images/037-fog.png'),
-                    fit: BoxFit.scaleDown,
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(8.0),
+                    child: Image(
+                      image: AssetImage('assets/images/cloud-256px.png'),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
-                Text(
-                  'Haze',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold),
+                Flexible(
+                  flex: 1,
+                  child: Text(
+                    'Haze',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             ),

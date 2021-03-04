@@ -12,8 +12,8 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  double latitute;
-  double longitute;
+  double latitude;
+  double longitude;
   static const String APIKEY = '0319c9f269575e5df0601a45b93580ee';
 
   @override
@@ -24,10 +24,10 @@ class _WeatherPageState extends State<WeatherPage> {
 
   void getDeviceLocationWeatherData() async {
     Position position = await Location.determinePosition();
-    latitute = position.latitude;
-    longitute = position.longitude;
+    latitude = position.latitude;
+    longitude = position.longitude;
     NetworkHelper networkHelper = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=$latitute&lon=$longitute&units=metric&appid=$APIKEY');
+        'https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&units=metric&appid=$APIKEY');
 
     var getWeatherData = await networkHelper.getData();
 
@@ -42,7 +42,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Container(
       decoration: kBoxDecoration,
-      padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+      padding: EdgeInsets.fromLTRB(16, 32, 16, 0),
       child: Column(
         children: [
           TemperatureWidget(),
@@ -54,25 +54,37 @@ class _WeatherPageState extends State<WeatherPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    WeatherCardWidget(
-                      weatherInfo: 'Wind',
-                      weatherValue: "N 7 mph",
+                    Flexible(
+                      flex:1,
+                      child: WeatherCardWidget(
+                        weatherInfo: 'Wind',
+                        weatherValue: "N 7 mph",
+                      ),
                     ),
-                    WeatherCardWidget(
-                      weatherInfo: 'Rain',
-                      weatherValue: "18%",
+                    Flexible(
+                      flex: 1,
+                      child: WeatherCardWidget(
+                        weatherInfo: 'Rain',
+                        weatherValue: "18%",
+                      ),
                     ),
-                    WeatherCardWidget(
-                      weatherInfo: 'Humidity',
-                      weatherValue: "59%",
+                    Flexible(
+                      flex: 1,
+                      child: WeatherCardWidget(
+                        weatherInfo: 'Humidity',
+                        weatherValue: "59%",
+                      ),
                     ),
-                    WeatherCardWidget(
-                      weatherInfo: 'Feels Like',
-                      weatherValue: "5°",
+                    Flexible(
+                      flex: 1,
+                      child: WeatherCardWidget(
+                        weatherInfo: 'Feels Like',
+                        weatherValue: "5°",
+                      ),
                     ),
                   ],
                 ),
-                //NextDayWeatherWidget(),
+                NextDayWeatherWidget(),
               ],
             ),
           ),
