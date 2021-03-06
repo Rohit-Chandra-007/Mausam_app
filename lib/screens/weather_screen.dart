@@ -39,7 +39,6 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        //color: Colors.pink,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
       ),
