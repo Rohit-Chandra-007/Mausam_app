@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/services/networking.dart';
-import 'package:mausam_app/utils/constants.dart';
-import 'package:mausam_app/widgets/nextdayweather.dart';
-import 'package:mausam_app/widgets/temperature_widget.dart';
 
 class WeatherPage extends StatefulWidget {
   @override
@@ -40,55 +37,11 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: kBoxDecoration,
-      padding: EdgeInsets.fromLTRB(16, 32, 16, 0),
-      child: Column(
-        children: [
-          TemperatureWidget(),
-          Expanded(
-            flex: 2,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      flex:1,
-                      child: WeatherCardWidget(
-                        weatherInfo: 'Wind',
-                        weatherValue: "N 7 mph",
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: WeatherCardWidget(
-                        weatherInfo: 'Rain',
-                        weatherValue: "18%",
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: WeatherCardWidget(
-                        weatherInfo: 'Humidity',
-                        weatherValue: "59%",
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: WeatherCardWidget(
-                        weatherInfo: 'Feels Like',
-                        weatherValue: "5°",
-                      ),
-                    ),
-                  ],
-                ),
-                NextDayWeatherWidget(),
-              ],
-            ),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        //color: Colors.pink,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
       ),
     );
   }

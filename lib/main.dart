@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mausam_app/screens/home_screen.dart';
+import 'package:mausam_app/screens/home_page.dart';
 
 void main() {
   runApp(WeatherApp());
@@ -10,7 +10,8 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomePage(),
     );
   }
 }
