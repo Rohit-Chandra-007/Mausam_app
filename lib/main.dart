@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mausam_app/screens/home_page.dart';
 
 void main() {
   runApp(WeatherApp());
@@ -11,8 +10,10 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.dark,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      home: HomePage(),
+      initialRoute: '/',
+      routes: {"/": (context) => WeatherApp()},
     );
   }
 }

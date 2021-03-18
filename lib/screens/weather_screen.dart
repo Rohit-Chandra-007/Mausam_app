@@ -9,8 +9,8 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  double latitude;
-  double longitude;
+  double? latitude;
+  double? longitude;
   static const String APIKEY = '0319c9f269575e5df0601a45b93580ee';
 
   @override
@@ -38,9 +38,11 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+      child: Material(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+        ),
       ),
     );
   }
@@ -52,7 +54,7 @@ class WeatherCardWidget extends StatelessWidget {
   final String weatherValue;
 
   const WeatherCardWidget(
-      {Key key, @required this.weatherInfo, @required this.weatherValue})
+      {Key? key, required this.weatherInfo, required this.weatherValue})
       : super(key: key);
 
   @override

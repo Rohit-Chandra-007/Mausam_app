@@ -3,7 +3,7 @@ import 'package:mausam_app/utils/constants.dart';
 
 class TemperatureWidget extends StatelessWidget {
   const TemperatureWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
