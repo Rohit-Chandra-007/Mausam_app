@@ -37,12 +37,23 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Material(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Mausam"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: InkWell(
+              child: Icon(Icons.more_vert_outlined),
+              onTap: () {
+                print('hello');
+              },
+            ),
+          )
+        ],
+      ),
+      body: Container(
+        child: Center(child: Text(("Flutter"))),
       ),
     );
   }
