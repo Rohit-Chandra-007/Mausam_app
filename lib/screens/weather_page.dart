@@ -73,7 +73,11 @@ class _WeatherPageState extends State<WeatherPage> {
               MinMaxTempWidget(),
               Divider(
                 color: Colors.red,
-              )
+              ),
+              horizontalList2,
+              Divider(
+                color: Colors.red,
+              ),
             ],
           ),
         ),
@@ -82,4 +86,63 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 }
 
-
+Widget horizontalList2 = new Container(
+    margin: EdgeInsets.symmetric(vertical: 8.0),
+    height: 100,
+    child: new ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/sunny_day.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/wind.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/wind.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/wind.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        )
+      ],
+    ));
