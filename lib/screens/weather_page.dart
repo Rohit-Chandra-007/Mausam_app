@@ -4,6 +4,7 @@ import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/services/networking.dart';
 import 'package:mausam_app/utils/constants.dart';
 import 'package:mausam_app/widgets/min_max_temp_widget.dart';
+import 'package:mausam_app/widgets/weather_detail_widget.dart';
 
 class WeatherPage extends StatefulWidget {
   @override
@@ -39,52 +40,53 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Material(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "ROORKEE",
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff3177F9)),
-              ),
-              Text(
-                "CLEAR SKY",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.blueGrey),
-              ),
-              Image.asset(
-                "assets/images/storm.png",
-                scale: 4,
-                fit: BoxFit.contain,
-              ),
-              Text(
-                '29°',
-                style: kTemperatureText,
-              ),
-              MinMaxTempWidget(),
-              Divider(
-                color: Colors.red,
-              ),
-              horizontalList2,
-              Divider(
-                color: Colors.red,
-              ),
-            ],
-          ),
+    return Material(
+      color: Colors.white,
+      child: Container(
+        padding: const EdgeInsets.only(top: 32, left: 8, right: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "ROORKEE",
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff3177F9)),
+            ),
+            Text(
+              "CLEAR SKY",
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.blueGrey),
+            ),
+            Image.asset(
+              "assets/images/storm.png",
+              scale: 4,
+              fit: BoxFit.contain,
+            ),
+            Text(
+              '29°',
+              style: kTemperatureText,
+            ),
+            MinMaxTempWidget(),
+            Divider(
+              color: Colors.red,
+            ),
+            horizontalList2,
+            Divider(
+              color: Colors.red,
+            ),
+            WeatherDetailWidget()
+          ],
         ),
       ),
     );
   }
 }
+
+
 
 Widget horizontalList2 = new Container(
     margin: EdgeInsets.symmetric(vertical: 8.0),
@@ -92,6 +94,58 @@ Widget horizontalList2 = new Container(
     child: new ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/sunny_day.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/wind.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/wind.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text("Sunday"),
+              Image.asset(
+                'assets/images/wind.png',
+                scale: 16,
+                fit: BoxFit.contain,
+              ),
+              Text("29°"),
+            ],
+          ),
+        ),
         Container(
           child: Column(
             children: [
