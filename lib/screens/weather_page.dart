@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mausam_app/services/location.dart';
 import 'package:mausam_app/services/networking.dart';
+import 'package:mausam_app/utils/constants.dart';
 
 class WeatherPage extends StatefulWidget {
   @override
@@ -37,23 +38,30 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Mausam"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: InkWell(
-              child: Icon(Icons.more_vert_outlined),
-              onTap: () {
-                print('hello');
-              },
+    return SafeArea(
+      child: Material(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Text(
+              "ROORKEE",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-          )
-        ],
-      ),
-      body: Container(
-        child: Center(child: Text(("Flutter"))),
+            Text(
+              "CLEAR SKY",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+            ),
+            Image.asset(
+              "assets/images/storm.png",
+              scale: 4,
+              fit: BoxFit.contain,
+            ),
+            Text(
+              '29°',
+              style: kTemperatureText,
+            )
+          ],
+        ),
       ),
     );
   }
