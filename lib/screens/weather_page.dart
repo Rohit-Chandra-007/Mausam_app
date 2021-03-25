@@ -26,16 +26,16 @@ class _WeatherPageState extends State<WeatherPage> {
     Position position = await Location.determinePosition();
     latitude = position.latitude;
     longitude = position.longitude;
-    NetworkHelper networkHelper = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&units=metric&appid=$APIKEY');
 
-    var getWeatherData = await networkHelper.getData();
+    NetworkHelper forecastResponseData = NetworkHelper(
+        weatherUrl: 'https://api.openweathermap.org/data/2.5/weather?'
+            'lat=$latitude&lon=$longitude&appid=$APIKEY',
+        forecastUrl: 'https://api.openweathermap.org/data/2.5/onecall?'
+            'lat=$latitude&lon=$longitude&exclude=current,minutely,'
+            'hourly,alerts&units=metric&appid=$APIKEY');
 
-    //  double temp = jsonResponse['main']['temp'];
-    //   String weatherCondition = jsonResponse['weather'][0]['main'];
-    // print(getWeatherData);
-
-    // print(weatherCondition);
+    var getWeatherData = await forecastResponseData.getData();
+    print(getWeatherData);
   }
 
   @override
@@ -85,8 +85,6 @@ class _WeatherPageState extends State<WeatherPage> {
     );
   }
 }
-
-
 
 Widget horizontalList2 = new Container(
     margin: EdgeInsets.symmetric(vertical: 8.0),

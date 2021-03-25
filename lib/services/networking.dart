@@ -3,16 +3,19 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 class NetworkHelper {
-  final String url;
+  final String weatherUrl;
+  final String forecastUrl;
 
-  NetworkHelper(this.url);
+  NetworkHelper({required this.weatherUrl, required this.forecastUrl});
 
   Future<dynamic> getData() async {
-    var response = await http.get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      return convert.jsonDecode(response.body);
+    var weatherResponse = await http.get(Uri.parse(weatherUrl));
+    var forecastResponse = await http.get(Uri.parse(forecastUrl));
+    if (weatherResponse.statusCode == 200 &&
+        forecastResponse.statusCode == 200) {
+      return convert.jsonDecode(weatherResponse.body);
     } else {
-      print('Request failed with status: ${response.statusCode}.');
+      print('Request failed with status: ${weatherResponse.statusCode}.');
     }
   }
 }
