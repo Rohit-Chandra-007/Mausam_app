@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TabLabelWidget extends StatelessWidget {
   final String tabLabel;
 
-  const TabLabelWidget({Key key, this.tabLabel}) : super(key: key);
+  const TabLabelWidget({super.key, required this.tabLabel});
 
   @override
   Widget build(BuildContext context) {

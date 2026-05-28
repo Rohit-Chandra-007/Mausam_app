@@ -6,8 +6,10 @@ import 'package:mausam_app/utils/constants.dart';
 import 'package:mausam_app/widgets/tab_label_widget.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
